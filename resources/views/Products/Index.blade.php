@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Laravel 8 CRUD Example </h2>
+            <h2>Laravel 8 CRUD Example</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route('products.create') }}" title="Create a product"> <i
@@ -22,7 +22,7 @@
 
 <table class="table table-bordered table-responsive-lg">
     <tr>
-        <th>No</th>
+        <th>#</th>
         <th>Name</th>
         <th>description</th>
         <th>Price</th>
@@ -32,16 +32,12 @@
     @foreach ($products as $product)
     <tr>
         <td>{{ $product->id }}</td>
-        <td>{{ $product->name }}</td>
+        <td><a href="{{ url('products/'.$product->id) }}">{{ $product->name }}</a></td>
         <td>{{ $product->description }}</td>
         <td>${{ $product->price }}</td>
         <td>{{ $product->created_at }}</td>
         <td>
             <form action="{{ url('products/' . $product->id) }}" method="POST">
-
-                <a href="{{ url('products/'.$product->id) }}" title="show">
-                    <i class="fas fa-eye text-success  fa-lg"></i>
-                </a>
 
                 <a href="{{ url('products/'.$product->id).'/edit' }}">
                     <i class="fas fa-edit  fa-lg"></i>
