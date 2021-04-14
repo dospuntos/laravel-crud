@@ -19,13 +19,13 @@
     <strong>Error!</strong>
     <ul>
         @foreach ($errors->all() as $error)
-        <li></li>
+        <li>{{ $error }}</li>
         @endforeach
     </ul>
 </div>
 @endif
 
-<form action="" method="POST">
+<form action="{{ route('products.update', ['product' => $product->id]) }}" method="POST">
     @csrf
     @method('PUT')
 
@@ -33,20 +33,20 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
-                <input type="text" name="name" value="" class="form-control" placeholder="Name">
+                <input type="text" name="name" value="{{ $product->name }}" class="form-control" placeholder="Name">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Description</strong>
                 <textarea class="form-control" style="height:50px" name="description"
-                    placeholder="description"></textarea>
+                    placeholder="description">{{ $product->description }}</textarea>
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Price</strong>
-                <input type="number" name="price" class="form-control" placeholder="" value="">
+                <input type="number" name="price" class="form-control" placeholder="" value="{{ $product->price }}">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
